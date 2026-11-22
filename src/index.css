@@ -1,0 +1,129 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  color-scheme: light;
+  --theme-index: 1;
+
+  --tss-bg-canvas: #f8f9fb;
+  --tss-bg-surface: #ffffff;
+  --tss-bg-surface-alt: #f3f5fa;
+  --tss-bg-hover-tint: rgba(79, 70, 229, 0.05);
+
+  --tss-ink-primary: #0d1524;
+  --tss-ink-secondary: #4b5565;
+  --tss-ink-muted: #475569;
+
+  --tss-border-subtle: #e4e8ef;
+  --tss-border-strong: #dde5f1;
+  --tss-border-hover: #c7d2fe;
+
+  --tss-accent-indigo: #4f46e5;
+  --tss-accent-indigo-ink: #4338ca;
+  --tss-accent-violet: #7c3aed;
+  --tss-accent-blue: #39a6de;
+  --tss-accent-blue-ink: #176083;
+
+  --tss-slider-track: #eef2f6;
+  --tss-slider-thumb: #ffffff;
+  --tss-slider-thumb-border: #dde5f1;
+  --tss-slider-thumb-shadow: 0 1px 3px rgba(13, 21, 36, 0.1);
+
+  --tss-dot-grid: rgba(79, 70, 229, 0.14);
+  --tss-glow-left: rgba(147, 51, 234, 0.09);
+  --tss-glow-right: rgba(59, 130, 246, 0.1);
+  --tss-cta-shadow: 0 10px 24px -10px rgba(79, 70, 229, 0.52);
+  --tss-cta-shadow-hover: 0 14px 28px -10px rgba(79, 70, 229, 0.62);
+
+  --tss-font-heading: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --tss-font-sans: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --tss-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html[data-theme="dark"],
+html.dark {
+  color-scheme: dark;
+
+  --tss-bg-canvas: #090d16;
+  --tss-bg-surface: #111827;
+  --tss-bg-surface-alt: #0d1320;
+  --tss-bg-hover-tint: rgba(99, 102, 241, 0.09);
+
+  --tss-ink-primary: #f1f5f9;
+  --tss-ink-secondary: #cbd5e1;
+  --tss-ink-muted: #94a3b8;
+
+  --tss-border-subtle: #1e293b;
+  --tss-border-strong: #28354b;
+  --tss-border-hover: rgba(129, 140, 248, 0.5);
+
+  --tss-accent-indigo: #6366f1;
+  --tss-accent-indigo-ink: #a5b4fc;
+  --tss-accent-violet: #7c3aed;
+  --tss-accent-blue: #38bdf8;
+  --tss-accent-blue-ink: #7dd3fc;
+
+  --tss-slider-track: #162033;
+  --tss-slider-thumb: #24314a;
+  --tss-slider-thumb-border: rgba(148, 163, 184, 0.28);
+  --tss-slider-thumb-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+
+  --tss-dot-grid: rgba(129, 140, 248, 0.16);
+  --tss-glow-left: rgba(147, 51, 234, 0.16);
+  --tss-glow-right: rgba(56, 189, 248, 0.14);
+  --tss-cta-shadow: 0 10px 24px -10px rgba(99, 102, 241, 0.45);
+  --tss-cta-shadow-hover: 0 14px 28px -10px rgba(124, 58, 237, 0.6);
+}
+
+html[data-theme-pref="light"] {
+  --theme-index: 0;
+}
+
+html[data-theme-pref="system"] {
+  --theme-index: 1;
+}
+
+html[data-theme-pref="dark"] {
+  --theme-index: 2;
+}
+
+body {
+  margin: 0;
+  font-family: var(--tss-font-sans);
+  background-color: var(--tss-bg-canvas);
+  color: var(--tss-ink-primary);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.24s var(--tss-ease-out), color 0.2s ease;
+}
+
+.tss-heading,
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--tss-font-heading);
+}
+
+.tss-body {
+  font-family: var(--tss-font-sans);
+}
+
+.tss-dot-backdrop {
+  background-image: radial-gradient(var(--tss-dot-grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.tss-theme-thumb {
+  transform: translateX(calc(var(--theme-index, 1) * 100%));
+  transition:
+    transform 0.26s var(--tss-ease-out),
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body,
+  .tss-theme-thumb {
+    transition: none;
+  }
+}

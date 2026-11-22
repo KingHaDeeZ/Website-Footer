@@ -1,0 +1,6 @@
+{
+  "name": "TechStack Sydney Footer",
+  "description": "Theme-adaptive website footer section for TechStack Sydney supporting Light, Dark, and System modes with direct navigation to all site pages.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

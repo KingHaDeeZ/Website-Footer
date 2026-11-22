@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en" data-theme-pref="system" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TechStack Sydney Footer</title>
+    <meta
+      name="description"
+      content="Theme-adaptive website footer section for TechStack Sydney supporting Light, Dark, and System modes with direct navigation to all site pages."
+    />
+    <meta property="og:title" content="TechStack Sydney Footer" />
+    <meta
+      property="og:description"
+      content="Theme-adaptive website footer section for TechStack Sydney supporting Light, Dark, and System modes with direct navigation to all site pages."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      (() => {
+        try {
+          const stored = localStorage.getItem('baseline-theme');
+          const pref =
+            stored === 'light' || stored === 'dark' || stored === 'system'
+              ? stored
+              : 'system';
+          const prefersDark =
+            window.matchMedia &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches;
+          const resolved =
+            pref === 'system' ? (prefersDark ? 'dark' : 'light') : pref;
+          const root = document.documentElement;
+          root.setAttribute('data-theme-pref', pref);
+          root.setAttribute('data-theme', resolved);
+          root.classList.toggle('dark', resolved === 'dark');
+        } catch {
+          document.documentElement.setAttribute('data-theme-pref', 'system');
+          document.documentElement.setAttribute('data-theme', 'light');
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
